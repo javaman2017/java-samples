@@ -6,23 +6,36 @@ public class Fibonacci {
 	/** 
 	 * Calculate MAX_INDEX Fibonacci numbers,
 	 * store them in an array and print them out 
-	 * at the end
+	 * at the end marking even numbers with a * 
 	 */
 	public static void main(String[] args) {
-		int[] fibonacciNumbers= new int[MAX_INDEX + 1];
+		FibonacciNumber[] fibonacciNumbers= new FibonacciNumber[MAX_INDEX + 1];
 		int lo = 1;
 		int hi = 1;
 		
-		fibonacciNumbers[0] = lo;
-		for(int i = 2; i <= MAX_INDEX; i++){
-			fibonacciNumbers[i] = hi;
+		FibonacciNumber fibonacciNumber = new FibonacciNumber();
+		fibonacciNumber.value = lo;
+		fibonacciNumber.isEven = (lo % 2 == 0);
+		
+		fibonacciNumbers[0] = fibonacciNumber;
+		for(int i = 1; i <= MAX_INDEX; i++){
+			fibonacciNumber = new FibonacciNumber();
+			fibonacciNumber.value = hi;
+			fibonacciNumber.isEven = (hi % 2 == 0);
+			fibonacciNumbers[i] = fibonacciNumber;
+			
 			hi = lo + hi;	// new hi
 			lo = hi - lo; 	/* new lo is (sum - old lo)
 							   that is, the old hi */
 		}
 		
 		for(int i = 0; i < fibonacciNumbers.length; i++){
-			System.out.println(fibonacciNumbers[i]);
+			String mark;
+			if(fibonacciNumbers[i].isEven)
+				mark = " *";
+			else
+				mark = "";
+			System.out.println(i + ": " + fibonacciNumbers[i].value + mark);
 		}
 
 	}
