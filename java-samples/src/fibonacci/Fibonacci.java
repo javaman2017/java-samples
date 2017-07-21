@@ -3,26 +3,26 @@ package fibonacci;
 public class Fibonacci {
 	static final int MAX_INDEX = 9;	// named constant
 
-	/** Print out the first few Fibonacci numbers,
-	 *  marking evens with a '*'  
+	/** 
+	 * Calculate MAX_INDEX Fibonacci numbers,
+	 * store them in an array and print them out 
+	 * at the end
 	 */
 	public static void main(String[] args) {
+		int[] fibonacciNumbers= new int[MAX_INDEX + 1];
 		int lo = 1;
 		int hi = 1;
 		
-		String mark;	//local variable mark
-		
-		System.out.println("9: " + lo);
-		// index counts backwards
-		for(int i = MAX_INDEX - 1; i >= 1; i--){
-			if(hi % 2 == 0)
-				mark = " *";
-			else
-				mark = "";
-			System.out.println(i + ": " + hi + mark);
+		fibonacciNumbers[0] = lo;
+		for(int i = 2; i <= MAX_INDEX; i++){
+			fibonacciNumbers[i] = hi;
 			hi = lo + hi;	// new hi
 			lo = hi - lo; 	/* new lo is (sum - old lo)
 							   that is, the old hi */
+		}
+		
+		for(int i = 0; i < fibonacciNumbers.length; i++){
+			System.out.println(fibonacciNumbers[i]);
 		}
 
 	}
