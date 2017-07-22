@@ -11,14 +11,16 @@ public class Body {
 		idNum = nextID++;
 	}
 	
+	Body(String bodyName, Body orbitsAround){
+		this(); 
+		name = bodyName;
+		orbits = orbitsAround;
+	}
+	
 	public static void main(String[] args){
-		Body sun = new Body();  //idNum is 0
-		sun.name = "Sun";
-		
-		Body earth = new Body(); //idNum is 1
-		earth.name = "Earth";
-		earth.orbits = sun;
-		
+		Body sun = new Body("Sun",null);
+		Body earth = new Body("Earth",sun); 
+	
 		System.out.println("The " + earth.name + " orbits the " + sun.name);
 		
 	}
