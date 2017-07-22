@@ -10,4 +10,16 @@ public class Body {
 	Body(){
 		idNum = nextID++;
 	}
+	
+	public static void main(String[] args){
+		Body sun = new Body();  //idNum is 0
+		sun.name = "Sun";
+		
+		Body earth = new Body(); //idNum is 1
+		earth.name = "Earth";
+		earth.orbits = sun;
+		
+		System.out.println("The " + earth.name + " orbits the " + sun.name);
+		
+	}
 }
