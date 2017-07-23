@@ -17,8 +17,12 @@ public class Body {
 		orbits = orbitsAround;
 	}
 	
+	Body(String bodyName){
+		this(bodyName,null);
+	}
+	
 	public static void main(String[] args){
-		Body sun = new Body("Sun",null);
+		Body sun = new Body("Sun");
 		Body earth = new Body("Earth",sun); 
 	
 		System.out.println("The " + earth.name + " orbits the " + sun.name);
