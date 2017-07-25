@@ -29,10 +29,10 @@ public class Body {
 	public static void main(String[] args){
 		Body sun = new Body("Sun");
 		Body earth = new Body("Earth",sun); 
-		Body earth2 = new Body(earth);
-	
-		System.out.println("The " + earth.name + " orbits the " + sun.name);
-		System.out.println("Earth2 orbits " + earth2.orbits.name);
+		System.out.println("Body " + earth.name + 
+				" orbits " + earth.orbits.name + 
+				" and has ID " + earth.idNum);
+
 		
 	}
 }
