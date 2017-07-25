@@ -7,12 +7,11 @@ public class Body {
 	
 	private static long nextID = 0;
 	
-	Body(){
+	{
 		idNum = nextID++;
 	}
 	
 	Body(String bodyName, Body orbitsAround){
-		this(); 
 		name = bodyName;
 		orbits = orbitsAround;
 	}
