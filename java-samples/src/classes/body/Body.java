@@ -33,7 +33,7 @@ public class Body {
 	public String toString() {
 		String desc =  "Body [idNum=" + idNum + ", name=" + name ; 
 		if (orbits != null)
-			desc += ", orbits=" + orbits;
+			desc += ", orbits=[" + orbits.name + "]";
 		if (orbiters != null){
 			desc += ", orbiters=[";
 			int count = orbiters.length;
