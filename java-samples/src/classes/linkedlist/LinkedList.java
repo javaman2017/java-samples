@@ -15,6 +15,13 @@ public class LinkedList {
 		this(value,null);
 	}
 	
+	public String toString(){
+		String desc = "( " + value + ") ";
+		if (next != null)
+			desc += next.toString();
+		return desc;
+	}
+	
 	public static void main(String[] args){
 		Vehicle vehicle1 = new Vehicle("Tom");
 		vehicle1.currentSpeed = 10;
@@ -31,5 +38,8 @@ public class LinkedList {
 		LinkedList tail = new LinkedList(vehicle3);
 		LinkedList node2 = new LinkedList(vehicle2,tail);
 		LinkedList head = new LinkedList(vehicle1,node2);
+		
+		System.out.println("LinkedList " + head);
+		
 	}
 }
