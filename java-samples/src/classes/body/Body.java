@@ -36,8 +36,8 @@ public class Body {
 	public static void main(String[] args){
 		Body sun = new Body("Sun");
 		Body earth = new Body("Earth",sun); 
-		System.out.println(sun);
-		System.out.println(earth);
+		System.out.println("Body " + sun);
+		System.out.println("Body " + earth);
 		
 	}
 }
