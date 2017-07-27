@@ -34,6 +34,16 @@ public class Body {
 		String desc =  "Body [idNum=" + idNum + ", name=" + name ; 
 		if (orbits != null)
 			desc += ", orbits=" + orbits;
+		if (orbiters != null){
+			desc += ", orbiters=[";
+			int count = orbiters.length;
+			for (int i = 0; i < count; i++){
+				desc += orbiters[i].name;
+				if (i < count - 1)
+					desc += ", ";
+			}
+		}
+		
 		desc += "]";
 	    return desc;
 	}
@@ -50,18 +60,13 @@ public class Body {
 		earth.setOrbiters(moon);
 		
 		System.out.println(earth);
-		
-		System.out.println("Orbiters " + Arrays.toString(earth.orbiters));
-		
+			
 		Body mars = new Body("Mars",sun);
 		Body phobos = new Body("Phobos",mars);
 		Body deimos = new Body("Deimos",mars);
 		mars.setOrbiters(phobos,deimos);
 		
 
-		System.out.println(mars);
-		
-		System.out.println("Orbiters " + Arrays.toString(mars.orbiters));
-		
+		System.out.println(mars);		
 	}
 }
