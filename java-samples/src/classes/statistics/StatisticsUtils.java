@@ -21,9 +21,11 @@ public class StatisticsUtils {
 	    
 	    //Find max/min values
 	    int len = data.length;
+	    //We copy the data set into copyData leaving data unchanged
 	    double[] copyData = Arrays.copyOf(data,len);
 	    Arrays.sort(copyData);
 	    
+	    //Max/min values can now just be read off the sorted array copyData
 	    elementaryStatistics.maxValue = copyData[len - 1];
 	    elementaryStatistics.minValue = copyData[0];
 	    
