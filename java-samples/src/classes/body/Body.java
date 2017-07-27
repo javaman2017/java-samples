@@ -26,13 +26,18 @@ public class Body {
 		orbits = other.orbits;
 	}
 	
+	public String toString(){
+		String desc = idNum + " (" + name + ")";
+		if(orbits != null)
+			desc += " orbits " + orbits.toString();
+		return desc;
+	}
+	
 	public static void main(String[] args){
 		Body sun = new Body("Sun");
 		Body earth = new Body("Earth",sun); 
-		System.out.println("Body " + earth.name + 
-				" orbits " + earth.orbits.name + 
-				" and has ID " + earth.idNum);
-
+		System.out.println(sun);
+		System.out.println(earth);
 		
 	}
 }
