@@ -1,17 +1,17 @@
 package classes.vehicles;
 
 public class Vehicle {
-	private static long nextID = 0;
+	public static long nextID = 0;
 	
 	public static long currentHighestId(){
 		return (nextID - 1);
 	}
 	
-	private long   id;
+	public long   id;
 	public double currentSpeed;
 	public double currentDirection; // currentDirection is in degrees from north
-	private String ownerName;
-	private String[] driverNames = null;
+	public String ownerName;
+	public String[] driverNames = null;
 	
 	{
 		id = nextID;
