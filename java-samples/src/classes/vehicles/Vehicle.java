@@ -2,6 +2,11 @@ package classes.vehicles;
 
 public class Vehicle {
 	public static long nextID = 0;
+	
+	public static long currentHighestId(){
+		return (nextID - 1);
+	}
+	
 	public long   id;
 	public double currentSpeed;
 	public double currentDirection; // currentDirection is in degrees from north
@@ -32,6 +37,8 @@ public class Vehicle {
 		vehicle3.currentSpeed = 30;
 		vehicle3.currentDirection = 0;
 		Vehicle.nextID++;
+		
+		System.out.println("Highest id used so far: " + Vehicle.currentHighestId());
 		
 		Vehicle[] vehicles = new Vehicle[] {vehicle1, vehicle2, vehicle3};
 		
