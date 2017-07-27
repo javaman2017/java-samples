@@ -1,9 +1,12 @@
 package classes.body;
 
+import java.util.Arrays;
+
 public class Body {
 	public long idNum;
 	public String name = "<unnamed>";
 	public Body orbits = null;
+	private Body[] orbiters = null;
 	
 	private static long nextID = 0;
 	
@@ -26,18 +29,39 @@ public class Body {
 		orbits = other.orbits;
 	}
 	
-	public String toString(){
-		String desc = idNum + " (" + name + ")";
-		if(orbits != null)
-			desc += " orbits " + orbits.toString();
-		return desc;
+	@Override
+	public String toString() {
+		String desc =  "Body [idNum=" + idNum + ", name=" + name ; 
+		if (orbits != null)
+			desc += ", orbits=" + orbits;
+		desc += "]";
+	    return desc;
+	}
+
+	public void setOrbiters(Body... orbiters){
+		this.orbiters = orbiters;
 	}
 	
 	public static void main(String[] args){
 		Body sun = new Body("Sun");
+		
 		Body earth = new Body("Earth",sun); 
-		System.out.println("Body " + sun);
-		System.out.println("Body " + earth);
+		Body moon = new Body("Moon",earth);
+		earth.setOrbiters(moon);
+		
+		System.out.println(earth);
+		
+		System.out.println("Orbiters " + Arrays.toString(earth.orbiters));
+		
+		Body mars = new Body("Mars",sun);
+		Body phobos = new Body("Phobos",mars);
+		Body deimos = new Body("Deimos",mars);
+		mars.setOrbiters(phobos,deimos);
+		
+
+		System.out.println(mars);
+		
+		System.out.println("Orbiters " + Arrays.toString(mars.orbiters));
 		
 	}
 }
