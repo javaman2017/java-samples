@@ -1,7 +1,5 @@
 package classes.body;
 
-import java.util.Arrays;
-
 public class Body {
 	public long idNum;
 	public String name = "<unnamed>";
