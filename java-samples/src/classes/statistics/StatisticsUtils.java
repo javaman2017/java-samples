@@ -9,24 +9,24 @@ public class StatisticsUtils {
 		//Calculate arithmeticAverage
 		int count = data.length;
 		double sum = 0.0;
-		for(int i = 0; i < count; i++)
-			sum += data[i];
+		for(double dataPoint: data)
+			sum += dataPoint;
 	    elementaryStatistics.arithmeticAverage = (sum / count);
 	    
 	    //Calculate geometricAverage
 	    double product = 1.0;
-	    for(int i = 0; i < count; i++)
-	    	product *= data[i];
+	    for(double dataPoint: data)
+	    	product *= dataPoint;
 	    elementaryStatistics.geometricAverages = Math.pow(product,1/((double)count));
 	    
 	    //Find max/min values
 	    double max = Double.MIN_VALUE;
 	    double min = Double.MAX_VALUE;
-	    for(int i = 0; i < count; i++){
-	    	if (data[i] > max)
-	    		max = data[i];
-	    	if (data[i] < min)
-	    		min = data[i];
+	    for(double dataPoint: data){
+	    	if (dataPoint > max)
+	    		max = dataPoint;
+	    	if (dataPoint < min)
+	    		min = dataPoint;
 	    }
 	    elementaryStatistics.maxValue = max;
 	    elementaryStatistics.minValue = min;
