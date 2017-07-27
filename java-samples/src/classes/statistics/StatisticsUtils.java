@@ -20,16 +20,12 @@ public class StatisticsUtils {
 	    elementaryStatistics.geometricAverages = Math.pow(product,1/((double)count));
 	    
 	    //Find max/min values
-	    double max = Double.MIN_VALUE;
-	    double min = Double.MAX_VALUE;
-	    for(double dataPoint: data){
-	    	if (dataPoint > max)
-	    		max = dataPoint;
-	    	if (dataPoint < min)
-	    		min = dataPoint;
-	    }
-	    elementaryStatistics.maxValue = max;
-	    elementaryStatistics.minValue = min;
+	    int len = data.length;
+	    double[] copyData = Arrays.copyOf(data,len);
+	    Arrays.sort(copyData);
+	    
+	    elementaryStatistics.maxValue = copyData[len - 1];
+	    elementaryStatistics.minValue = copyData[0];
 	    
 	    return elementaryStatistics;
 	}
