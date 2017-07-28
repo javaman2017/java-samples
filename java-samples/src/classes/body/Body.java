@@ -17,7 +17,7 @@ public class Body {
 		orbits = orbitsAround;
 	}
 	
-	Body(String bodyName){
+	public Body(String bodyName){
 		this(bodyName,null);
 	}
 	
@@ -47,6 +47,7 @@ public class Body {
 	}
 
 	public void setOrbiters(Body... orbiters){
+		System.out.println("Orbiters length: " + orbiters.length);
 		this.orbiters = orbiters;
 	}
 	
@@ -63,8 +64,7 @@ public class Body {
 		Body phobos = new Body("Phobos",mars);
 		Body deimos = new Body("Deimos",mars);
 		mars.setOrbiters(phobos,deimos);
-		
-
+	
 		System.out.println(mars);		
 	}
 }
