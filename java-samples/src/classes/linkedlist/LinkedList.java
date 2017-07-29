@@ -1,35 +1,22 @@
 package classes.linkedlist;
 
+import java.util.Arrays;
+
 import classes.vehicles.Vehicle;
 
 public class LinkedList {
-	private Object value;
-	private LinkedList next;
+	private Node[] nodes = null;
 	
-	public LinkedList(Object value, LinkedList next){
-		this.value = value;
-		this.next = next;
-	}
-	
-	public LinkedList(Object value){
-		this(value,null);
-	}
-	
-	public Object getValue() {
-		return value;
-	}
-
 	@Override
 	public String toString() {
-		return "LinkedList [value=" + value + ", next=" + next + "]";
+		return "LinkedList [nodes=" + Arrays.toString(nodes) + "]";
 	}
 
-	public void setValue(Object value) {
-		this.value = value;
+	public LinkedList(){
 	}
-
-	public LinkedList getNext() {
-		return next;
+	
+	public LinkedList(Node... nodes){
+		this.nodes = nodes;
 	}
 
 	public static void main(String[] args){
@@ -45,11 +32,15 @@ public class LinkedList {
 		vehicle3.setCurrentSpeed(30);
 		vehicle3.setCurrentDirection(0);
 		
-		LinkedList tail = new LinkedList(vehicle3);
-		LinkedList node2 = new LinkedList(vehicle2,tail);
-		LinkedList head = new LinkedList(vehicle1,node2);
+		Node node3 = new Node(vehicle3);
+		Node node2 = new Node(vehicle2,node3);
+		Node node1 = new Node(vehicle1,node2);
+
 		
-		System.out.println(head);
+		Node[] nodes = {node1,node2,node3};
+		LinkedList linkedList = new LinkedList(nodes);
+		
+		System.out.println(linkedList);
 		
 	}
 }
