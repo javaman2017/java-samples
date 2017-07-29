@@ -3,25 +3,35 @@ package classes.linkedlist;
 import classes.vehicles.Vehicle;
 
 public class LinkedList {
-	public Object value;
-	public LinkedList next;
+	private Object value;
+	private LinkedList next;
 	
-	LinkedList(Object value, LinkedList next){
+	public LinkedList(Object value, LinkedList next){
 		this.value = value;
 		this.next = next;
 	}
 	
-	LinkedList(Object value){
+	public LinkedList(Object value){
 		this(value,null);
 	}
 	
-	public String toString(){
-		String desc = "( " + value + ") ";
-		if (next != null)
-			desc += next.toString();
-		return desc;
+	public Object getValue() {
+		return value;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "LinkedList [value=" + value + ", next=" + next + "]";
+	}
+
+	public void setValue(Object value) {
+		this.value = value;
+	}
+
+	public LinkedList getNext() {
+		return next;
+	}
+
 	public static void main(String[] args){
 		Vehicle vehicle1 = new Vehicle("Tom");
 		vehicle1.setCurrentSpeed(10);
@@ -39,7 +49,7 @@ public class LinkedList {
 		LinkedList node2 = new LinkedList(vehicle2,tail);
 		LinkedList head = new LinkedList(vehicle1,node2);
 		
-		System.out.println("LinkedList " + head);
+		System.out.println(head);
 		
 	}
 }
