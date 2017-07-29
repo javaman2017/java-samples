@@ -7,7 +7,7 @@ import classes.vehicles.Vehicle;
 public class LinkedList {
 	private static final int DEFAULT_SIZE= 10;
 	private Node[] nodes = null;
-	private int headIndex = 0;
+	private int size = 0;
 	
 	@Override
 	public String toString() {
@@ -24,14 +24,14 @@ public class LinkedList {
 	
 	public boolean add(Node node){
 		boolean result = false;
-		if (headIndex > 0){
-			Node currentHead = nodes[headIndex];
+		if (size > 0){
+			Node currentHead = nodes[size];
 			Node oldHead = new Node(currentHead,node);
-			nodes[headIndex] = oldHead;
-			nodes[headIndex++] = node;
+			nodes[size] = oldHead;
+			nodes[size++] = node;
 			result = true;
 		} else {
-			nodes[headIndex++] = node;
+			nodes[size++] = node;
 			result = true;
 		}
 		
@@ -39,7 +39,7 @@ public class LinkedList {
 	}
 	
 	public int size(){
-		return headIndex;
+		return size;
 	}
 
 	public static void main(String[] args){
