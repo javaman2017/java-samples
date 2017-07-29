@@ -5,7 +5,7 @@ import java.util.Arrays;
 import classes.vehicles.Vehicle;
 
 public class LinkedList {
-	private static final int DEFAULT_SIZE= 10;
+	private static final int DEFAULT_LENGTH= 10;
 	private Node[] nodes = null;
 	private int size = 0;
 	
@@ -15,7 +15,7 @@ public class LinkedList {
 	}
 
 	public LinkedList(){
-		nodes = new Node[DEFAULT_SIZE];
+		nodes = new Node[DEFAULT_LENGTH];
 	}
 	
 	public LinkedList(Node... nodes){
