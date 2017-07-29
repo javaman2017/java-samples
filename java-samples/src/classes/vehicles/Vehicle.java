@@ -39,13 +39,17 @@ public class Vehicle {
 		desc += "]";
 		return desc;
 	}
+	
+	public void changeSpeed(double newSpeed){
+		this.currentSpeed = newSpeed;
+	}
+	
+	public void stop(){
+		this.currentSpeed = 0.0;
+	}
 
 	public double getCurrentSpeed() {
 		return currentSpeed;
-	}
-
-	public void setCurrentSpeed(double currentSpeed) {
-		this.currentSpeed = currentSpeed;
 	}
 
 	public double getCurrentDirection() {
