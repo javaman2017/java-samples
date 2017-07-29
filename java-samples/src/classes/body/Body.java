@@ -1,7 +1,7 @@
 package classes.body;
 
 public class Body {
-	public long idNum;
+	private long idNum;
 	public String name = "<unnamed>";
 	public Body orbits = null;
 	private Body[] orbiters = null;
@@ -49,6 +49,10 @@ public class Body {
 	public void setOrbiters(Body... orbiters){
 		System.out.println("Orbiters length: " + orbiters.length);
 		this.orbiters = orbiters;
+	}
+	
+	private long getIdNum() {
+		return idNum;
 	}
 	
 	public static void main(String[] args){
