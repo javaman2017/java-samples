@@ -13,7 +13,7 @@ public class PassByRef {
 	}
 	
 	public static void commonName(Body bodyRef){
-		bodyRef.name = "Dog Star";
+		bodyRef.setName("Dog Star");
 		bodyRef = null;
 	}
 
