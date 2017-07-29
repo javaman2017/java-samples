@@ -1,17 +1,17 @@
 package classes.vehicles;
 
 public class Vehicle {
-	public static long nextID = 0;
+	private static long nextID = 0;
 	
 	public static long currentHighestId(){
 		return (nextID - 1);
 	}
 	
-	public long   id;
-	public double currentSpeed;
-	public double currentDirection; // currentDirection is in degrees from north
-	public String ownerName;
-	public String[] driverNames = null;
+	final private long   id;
+	private double currentSpeed;
+	private double currentDirection; // currentDirection is in degrees from north
+	private String ownerName;
+	private String[] driverNames = null;
 	
 	{
 		id = nextID;
@@ -20,10 +20,6 @@ public class Vehicle {
 	
 	public Vehicle(String ownerName){
 		this.ownerName = ownerName;
-	}
-	
-	public void setDriverNames(String... driverNames){
-		this.driverNames = driverNames;
 	}
 	
 	@Override
@@ -42,6 +38,42 @@ public class Vehicle {
 		}
 		desc += "]";
 		return desc;
+	}
+
+	public double getCurrentSpeed() {
+		return currentSpeed;
+	}
+
+	public void setCurrentSpeed(double currentSpeed) {
+		this.currentSpeed = currentSpeed;
+	}
+
+	public double getCurrentDirection() {
+		return currentDirection;
+	}
+
+	public void setCurrentDirection(double currentDirection) {
+		this.currentDirection = currentDirection;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String[] getDriverNames() {
+		return driverNames;
+	}
+	
+	public void setDriverNames(String... driverNames){
+		this.driverNames = driverNames;
 	}
 
 	public static void main(String[] args){
