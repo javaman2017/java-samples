@@ -70,21 +70,16 @@ public class Body {
 	public void setOrbits(Body orbits) {
 		this.orbits = orbits;
 	}
+	
+	public void capture(Body victim){
+		victim.orbits = this;
+	}
 
 	public static void main(String[] args){
-		Body sun = new Body("Sun");
-		
-		Body earth = new Body("Earth",sun); 
-		Body moon = new Body("Moon",earth);
-		earth.setOrbiters(moon);
-		
-		System.out.println(earth);
-			
-		Body mars = new Body("Mars",sun);
-		Body phobos = new Body("Phobos",mars);
-		Body deimos = new Body("Deimos",mars);
-		mars.setOrbiters(phobos,deimos);
-	
-		System.out.println(mars);		
+		Body earth = new Body("Earth");
+		Body satellite = new Body("Satellite");
+		System.out.println("Before: " + satellite);
+		earth.capture(satellite);
+		System.out.println("After: " + satellite);	
 	}
 }
