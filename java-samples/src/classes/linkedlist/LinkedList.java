@@ -19,18 +19,10 @@ public class LinkedList {
 	}
 	
 	public LinkedList(Node... nodes){
-		if (nodes == null || nodes.length == 0)
-			throw new IllegalArgumentException("Please supply a node list");
 		this.nodes = nodes;
 	}
 	
 	public boolean add(Node node){
-		if (headIndex + 1 > nodes.length){
-			Node[] tempNodeArray = new Node[2 * nodes.length];
-			System.arraycopy(nodes, 0, tempNodeArray,0, nodes.length);
-			nodes = tempNodeArray;
-		}
-		
 		boolean result = false;
 		if (headIndex > 0){
 			Node currentHead = nodes[headIndex];
@@ -44,6 +36,10 @@ public class LinkedList {
 		}
 		
 		return true;
+	}
+	
+	public int size(){
+		return headIndex;
 	}
 
 	public static void main(String[] args){
@@ -69,6 +65,8 @@ public class LinkedList {
 		linkedList.add(tail);
 		
 		System.out.println(linkedList);
+		
+		System.out.println("Number of elements in linkedList: " + linkedList.size());
 		
 	}
 }
