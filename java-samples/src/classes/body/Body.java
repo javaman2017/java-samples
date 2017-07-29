@@ -2,8 +2,8 @@ package classes.body;
 
 public class Body {
 	private long idNum;
-	public String name = "<unnamed>";
-	public Body orbits = null;
+	private String name = "<unnamed>";
+	private Body orbits = null;
 	private Body[] orbiters = null;
 	
 	private static long nextID = 0;
@@ -55,6 +55,22 @@ public class Body {
 		return idNum;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Body getOrbits() {
+		return orbits;
+	}
+
+	public void setOrbits(Body orbits) {
+		this.orbits = orbits;
+	}
+
 	public static void main(String[] args){
 		Body sun = new Body("Sun");
 		
