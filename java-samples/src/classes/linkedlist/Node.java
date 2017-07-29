@@ -3,7 +3,7 @@ package classes.linkedlist;
 public class Node {
 	private Object value;
 	private Node next;
-	
+
 	public Node(Object value, Node next){
 		this.value = value;
 		this.next = next;
@@ -12,14 +12,14 @@ public class Node {
 	public Node(Object value){
 		this(value,null);
 	}
-	
-	public Object getValue() {
-		return value;
-	}
 
 	@Override
 	public String toString() {
 		return "Node [value=" + value + ", next=" + next + "]";
+	}
+	
+	public Object getValue() {
+		return value;
 	}
 
 	public void setValue(Object value) {
