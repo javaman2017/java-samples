@@ -27,7 +27,7 @@ public class LinkedList {
 	public boolean add(Node node){
 		if (headIndex + 1 > nodes.length){
 			Node[] tempNodeArray = new Node[2 * nodes.length];
-			System.arraycopy(nodes, 0, tempNodeArray, nodes.length, nodes.length);
+			System.arraycopy(nodes, 0, tempNodeArray,0, nodes.length);
 			nodes = tempNodeArray;
 		}
 		
@@ -63,12 +63,12 @@ public class LinkedList {
 		Node node2 = new Node(vehicle2,tail);
 		Node head = new Node(vehicle1,node2);
 
-		LinkedList linkedlist = new LinkedList();
-		linkedlist.add(head);
-		linkedlist.add(node2);
-		linkedlist.add(tail);
+		LinkedList linkedList = new LinkedList();
+		linkedList.add(head);
+		linkedList.add(node2);
+		linkedList.add(tail);
 		
-		System.out.println(linkedlist);
+		System.out.println(linkedList);
 		
 	}
 }
