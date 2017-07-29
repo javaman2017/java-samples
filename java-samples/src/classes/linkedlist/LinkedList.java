@@ -24,16 +24,16 @@ public class LinkedList {
 	
 	public static void main(String[] args){
 		Vehicle vehicle1 = new Vehicle("Tom");
-		vehicle1.currentSpeed = 10;
-		vehicle1.currentDirection = 1;
+		vehicle1.setCurrentSpeed(10);
+		vehicle1.setCurrentDirection(1);
 		
 		Vehicle vehicle2 = new Vehicle("Dick");
-		vehicle2.currentSpeed = 20;
-		vehicle2.currentDirection = -1;
+		vehicle2.setCurrentSpeed(20);
+		vehicle2.setCurrentDirection(-1);
 		
 		Vehicle vehicle3 = new Vehicle("Harry");
-		vehicle3.currentSpeed = 30;
-		vehicle3.currentDirection = 0;
+		vehicle3.setCurrentSpeed(30);
+		vehicle3.setCurrentDirection(0);
 		
 		LinkedList tail = new LinkedList(vehicle3);
 		LinkedList node2 = new LinkedList(vehicle2,tail);
