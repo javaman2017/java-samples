@@ -12,8 +12,8 @@ public class Body {
 		idNum = nextID++;
 	}
 	
-	Body(String bodyName, Body orbitsAround){
-		name = bodyName;
+	Body(String name, Body orbitsAround){
+		this.name = name;
 		orbits = orbitsAround;
 	}
 	
@@ -44,6 +44,14 @@ public class Body {
 		
 		desc += "]";
 	    return desc;
+	}
+	
+	public boolean orbitsAround(Body other){
+		return (orbits == other);
+	}
+	
+	public boolean orbitsAround(long id){
+		return (orbits != null && orbits.idNum == id);
 	}
 
 	public void setOrbiters(Body... orbiters){
@@ -78,8 +86,8 @@ public class Body {
 	public static void main(String[] args){
 		Body earth = new Body("Earth");
 		Body satellite = new Body("Satellite");
-		System.out.println("Before: " + satellite);
+		System.out.println("Does satellite orbit around the earth?: " + satellite.orbitsAround(earth));
 		earth.capture(satellite);
-		System.out.println("After: " + satellite);	
+		System.out.println("Does satellite orbit around the earth?: " + satellite.orbitsAround(earth));
 	}
 }
