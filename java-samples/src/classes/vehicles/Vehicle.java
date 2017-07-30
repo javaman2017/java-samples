@@ -1,6 +1,8 @@
 package classes.vehicles;
 
 public class Vehicle {
+	public static byte TURN_LEFT = -45;
+	public static byte TURN_RIGHT = 45;
 	private static long nextID = 0;
 	
 	public static long currentHighestId(){
@@ -47,7 +49,16 @@ public class Vehicle {
 	public void stop(){
 		this.currentSpeed = 0.0;
 	}
-
+	
+	public void turn(double degrees){
+		currentDirection += degrees;
+		currentDirection %= 360;
+	}
+	
+	public void turn(byte direction){
+		currentDirection += direction;
+	}
+	
 	public double getCurrentSpeed() {
 		return currentSpeed;
 	}
@@ -87,8 +98,13 @@ public class Vehicle {
 	public static void main(String[] args){
 		Vehicle vehicle1 = new Vehicle("Tom");
 		vehicle1.currentSpeed = 10;
-		vehicle1.currentDirection = 1;
-		vehicle1.setDriverNames("Dick","Harry");
-		System.out.println(vehicle1);
+		vehicle1.currentDirection = 10;
+		System.out.println("Current direction: " + vehicle1.getCurrentDirection());
+		System.out.println("Turning 20 degrees");
+		vehicle1.turn(20.0);
+		System.out.println("Current direction: " + vehicle1.getCurrentDirection());
+		System.out.println("Turning Left");
+		vehicle1.turn(Vehicle.TURN_LEFT);
+		System.out.println("Current direction: " + vehicle1.getCurrentDirection());
 	}
 }
