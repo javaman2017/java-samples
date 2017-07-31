@@ -5,7 +5,7 @@ public class ColourAttr extends Attr {
 
 	public ColourAttr(String name, Object value) {
 		super(name, value);
-		//decode colour
+		decodeColour();
 	}
 	
 	public ColourAttr(String name){
@@ -20,7 +20,7 @@ public class ColourAttr extends Attr {
 	public Object setValue(Object newValue) {
 		// do the superclass's setValue work first
 		Object retVal = super.setValue(newValue);
-		//decoded colour
+		decodeColour();
 	    return retVal;
 	}
 	
