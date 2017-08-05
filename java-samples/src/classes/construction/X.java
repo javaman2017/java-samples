@@ -5,8 +5,10 @@ public class X {
 	protected int fullMask;
 
 	public X() {
-		super();
+		System.out.println("xMask\tyMask\tfullMask");
+		System.out.printf("%#x\t%x\t%x\n",xMask,0,fullMask);
 		fullMask = xMask;
+		System.out.printf("%#x\t%x\t%#x\n",xMask,0,fullMask);
 	}
 	
 	public int mask(int orig){
