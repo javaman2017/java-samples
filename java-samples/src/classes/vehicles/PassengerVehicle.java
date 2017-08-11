@@ -9,7 +9,7 @@ public class PassengerVehicle extends Vehicle {
 		this.numberOfSeats = numberOfSeats;
 	}
 	
-	public int getOccupiedNumberOfSeats() {
+	public final int getOccupiedNumberOfSeats() {
 		return occupiedNumberOfSeats;
 	}
 
@@ -17,7 +17,7 @@ public class PassengerVehicle extends Vehicle {
 		this.occupiedNumberOfSeats = occupiedNumberOfSeats;
 	}
 
-	public int getNumberOfSeats() {
+	public final int getNumberOfSeats() {
 		return numberOfSeats;
 	}
 
