@@ -1,15 +1,15 @@
 package classes.vehicles;
 
 public class Vehicle {
-	public static byte TURN_LEFT = -45;
-	public static byte TURN_RIGHT = 45;
+	final public static byte TURN_LEFT = -45;
+	final public static byte TURN_RIGHT = 45;
 	private static long nextID = 0;
 	
-	public static long currentHighestId(){
+	public final static long currentHighestId(){
 		return (nextID - 1);
 	}
 	
-	final private long   id;
+	final private long id;
 	private double currentSpeed;
 	private double currentDirection; // currentDirection is in degrees from north
 	private String ownerName;
@@ -46,7 +46,7 @@ public class Vehicle {
 		this.currentSpeed = newSpeed;
 	}
 	
-	public void stop(){
+	public final void stop(){
 		this.currentSpeed = 0.0;
 	}
 	
@@ -59,7 +59,7 @@ public class Vehicle {
 		currentDirection += direction;
 	}
 	
-	public double getCurrentSpeed() {
+	public final double getCurrentSpeed() {
 		return currentSpeed;
 	}
 	
@@ -67,7 +67,7 @@ public class Vehicle {
 		this.currentSpeed = currentSpeed;
 	}
 
-	public double getCurrentDirection() {
+	public final double getCurrentDirection() {
 		return currentDirection;
 	}
 
@@ -75,7 +75,7 @@ public class Vehicle {
 		this.currentDirection = currentDirection;
 	}
 
-	public String getOwnerName() {
+	public final String getOwnerName() {
 		return ownerName;
 	}
 
@@ -83,11 +83,11 @@ public class Vehicle {
 		this.ownerName = ownerName;
 	}
 
-	public long getId() {
+	public final long getId() {
 		return id;
 	}
 
-	public String[] getDriverNames() {
+	public final String[] getDriverNames() {
 		return driverNames;
 	}
 	
