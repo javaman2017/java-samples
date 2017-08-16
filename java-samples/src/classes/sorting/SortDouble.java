@@ -27,7 +27,7 @@ public abstract class SortDouble {
         return values[i];
     }
     
-    /** v  extended classes to compare elements */
+    /** For  extended classes to compare elements */
     protected final int compare(int i, int j){
         curMetrics.compareCnt++;
         double d1 = values[i];
