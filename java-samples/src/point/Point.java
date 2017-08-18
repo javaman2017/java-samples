@@ -1,8 +1,8 @@
 package point;
 
-public class Point {
-	public static Point origin = new Point();
-	public double x, y;
+public class Point implements Comparable<Point> {
+	public static final Point ORIGIN = new Point();
+	private double x, y;
 	
 	public double distance(Point that){
 		double xdiff = x - that.x;
@@ -10,7 +10,16 @@ public class Point {
 		return Math.sqrt(xdiff * xdiff + ydiff * ydiff);
 	}
 	
-	public void move(double x, double y){
+	public Point(){
+	}
+	
+	public Point(double x, double y) {
+        super();
+        this.x = x;
+        this.y = y;
+    }
+
+    public void move(double x, double y){
 		this.x = x;
 		this.y = y;
 	}
@@ -26,30 +35,31 @@ public class Point {
 		return "Point [x=" + x + ", y=" + y + "]";
 	}
 	
+
+    @Override
+    public int compareTo(Point p) {
+        double pDist = p.distance(ORIGIN);
+        double dist = this.distance(ORIGIN);
+        if(dist > pDist)
+            return 1;
+        else if (dist == pDist)
+            return 0;
+        else 
+            return -1;
+    }
+	
 	public static void main(String[] args) {
-		Point lowerLeft = Point.origin;
-		Point upperRight = new Point();
-		Point middlePoint = new Point();
-		
-		upperRight.x = 1280.0;
-		upperRight.y = 1024.0;
-		
-		middlePoint.x = 640.0;
-		middlePoint.y = 512.0;
-		
-		System.out.println(upperRight);
-		System.out.println(middlePoint);
-		
-		System.out.println("Distance between " + upperRight + " and " + middlePoint + " equals " + 
-		upperRight.distance(middlePoint));
-		
-		System.out.println("Moving point " + lowerLeft + " to coordinates (1.0, 1.0)");
-		lowerLeft.move(1.0,1.0);
-		System.out.println(lowerLeft);
-		
-		System.out.println("Moving lowerLeft now to upperRight point");
-		lowerLeft.move(upperRight);
-		System.out.println(lowerLeft);
-		
+	    Point p1 = new Point(1,1);
+	    Point p2 = new Point();
+	    
+	    int comparison = p2.compareTo(p1);
+	    
+	    if(comparison == 1){
+	        System.out.println("p2 is farther than p1 from the origin");
+	    } else if(comparison == 0){
+	        System.out.println("p2 and p1 are equal distance from the origin");
+	    } else {
+            System.out.println("p1 is farther than p2 from the origin");
+	    }		
 	}
 }
