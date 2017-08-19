@@ -1,7 +1,5 @@
 package classes.sorting;
 
-import classes.sorting.interfaces.SortHarness;
-
 public abstract class SortHarnessImpl<T extends Comparable<T>> implements SortHarness<T>{
     private T[] values;
     private final SortMetrics curMetrics = new SortMetrics();

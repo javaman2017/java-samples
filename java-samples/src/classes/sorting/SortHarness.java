@@ -1,8 +1,6 @@
-package classes.sorting.interfaces;
+package classes.sorting;
 
-import classes.sorting.SortMetrics;
-
-public interface SortHarness<T extends Comparable<T>> {
+interface SortHarness<T extends Comparable<T>> {
     /* Invoked to do the full sort */
     SortMetrics sort(T[] data);
     
