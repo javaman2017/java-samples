@@ -1,6 +1,6 @@
 package classes.energysources;
 
-public class Battery extends EnergySource {
+public class Battery implements EnergySource {
 
     @Override
     public boolean empty() {
