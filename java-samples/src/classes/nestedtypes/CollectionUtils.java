@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 public class CollectionUtils {
     
     public static Iterator<Object> walkThrough(final Object[] objs){
-        class Iter implements Iterator<Object> {
+        return new Iterator<Object>() {
             private int pos = 0;
             public boolean hasNext(){
                 return (pos < objs.length);
@@ -21,9 +21,7 @@ public class CollectionUtils {
             public void remove(){
                 throw new UnsupportedOperationException();
             }
-        }
-        
-        return new Iter();
+        };
     }
 
     public static void main(String[] args) {
