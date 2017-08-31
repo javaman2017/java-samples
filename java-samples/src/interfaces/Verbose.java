@@ -1,11 +1,18 @@
 package interfaces;
 
-interface Verbose {
-    int SILENT = 0;
-    int TERSE = 1;
-    int NORMAL = 2;
-    int VERBOSE = 3;
+public enum Verbose {
+    SILENT(0),
+    TERSE(1),
+    NORMAL(2),
+    VERBOSE(3);
     
-    void setVerbosity(int level);
-    int getVerbosity();
+    private int verbosity;
+    
+    Verbose(int verbosity){
+        this.verbosity = verbosity;
+    }
+    
+    public int getVerbosity() {
+        return this.verbosity;
+    }
 }
