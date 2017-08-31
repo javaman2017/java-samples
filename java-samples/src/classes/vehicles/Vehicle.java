@@ -1,8 +1,11 @@
 package classes.vehicles;
 
+import classes.energysources.Battery;
+import classes.energysources.EnergySource;
+import classes.energysources.GasTank;
+
 public class Vehicle {
-	final public static byte TURN_LEFT = -45;
-	final public static byte TURN_RIGHT = 45;
+	public enum Turn { LEFT, RIGHT };
 	private static long nextID = 0;
 	
 	public final static long currentHighestId(){
@@ -10,36 +13,20 @@ public class Vehicle {
 	}
 	
 	final private long id;
+	final private EnergySource energySource;
 	private double currentSpeed;
 	private double currentDirection; // currentDirection is in degrees from north
 	private String ownerName;
 	private String[] driverNames = null;
 	
-	{
+    {
 		id = nextID;
 		nextID++;
 	}
 	
-	public Vehicle(String ownerName){
+	public Vehicle(EnergySource energySource, String ownerName){
+	    this.energySource = energySource;
 		this.ownerName = ownerName;
-	}
-	
-	@Override
-	public String toString() {
-		String desc = "Vehicle [id=" + id + ", currentSpeed=" + currentSpeed + ", currentDirection=" + currentDirection
-				+ ", ownerName=" + ownerName;
-		if (driverNames != null){
-			desc += ", drivers=[";
-			desc += ownerName + ", ";
-			int count = driverNames.length;
-			for(int i = 0; i < count; i++){
-				desc += driverNames[i];
-				if (i < count - 1)
-					desc += ", ";
-			}
-		}
-		desc += "]";
-		return desc;
 	}
 	
 	public void changeSpeed(double newSpeed){
@@ -94,17 +81,40 @@ public class Vehicle {
 	public void setDriverNames(String... driverNames){
 		this.driverNames = driverNames;
 	}
+	
+    public final EnergySource getEnergySource() {
+        return energySource;
+    }
+    
+    public final void start(){
+        if(energySource.empty())
+            throw new RuntimeException("EnerySource is empty cannot start vehicle");
+            
+    }
+    
+    @Override
+    public String toString() {
+        String desc = "Vehicle [id=" + id + ", currentSpeed=" + currentSpeed +
+                      ", currentDirection=" + currentDirection
+                + ", ownerName=" + ownerName;
+        if (driverNames != null){
+            desc += ", drivers=[";
+            desc += ownerName + ", ";
+            int count = driverNames.length;
+            for(int i = 0; i < count; i++){
+                desc += driverNames[i];
+                if (i < count - 1)
+                    desc += ", ";
+            }
+        }
+        desc += "]";
+        return desc;
+    }
 
 	public static void main(String[] args){
-		Vehicle vehicle1 = new Vehicle("Tom");
-		vehicle1.currentSpeed = 10;
-		vehicle1.currentDirection = 10;
-		System.out.println("Current direction: " + vehicle1.getCurrentDirection());
-		System.out.println("Turning 20 degrees");
-		vehicle1.turn(20.0);
-		System.out.println("Current direction: " + vehicle1.getCurrentDirection());
-		System.out.println("Turning Left");
-		vehicle1.turn(Vehicle.TURN_LEFT);
-		System.out.println("Current direction: " + vehicle1.getCurrentDirection());
+		Vehicle car = new Vehicle(new GasTank(),"Tom");
+		car.start();
+		Vehicle electricCar = new Vehicle(new Battery(),"Dick");
+		electricCar.start();
 	}
 }
