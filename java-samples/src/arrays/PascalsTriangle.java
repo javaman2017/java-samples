@@ -40,7 +40,6 @@ public class PascalsTriangle {
         //Print out Pascal's triangle
         for(int[] row : pascalsTriangle)
             System.out.println(Arrays.toString(row));
-
     }
 
 }
