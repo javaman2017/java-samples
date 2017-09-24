@@ -13,25 +13,34 @@ public class StringUtils {
         if (str.length() > 0) {
             for (int i = 0; i < str.length(); i++) {
                 char c = str.charAt(i);
-                if (c == '\n') {
-                    result += "\\n";
-                } else if (c == '\t' ) {
-                    result += "\\t";
-                } else if (c == '\b' ) {
-                    result += "\\b";
-                } else if (c == '\r' ) {
-                    result += "\\r";
-                } else if (c == '\f' ) {
-                    result += "\\f";
-                } else if (c == '\\' ) {
-                    result += "\\";
-                } else if (c == '\'' ) {
-                    result += "\\'";
-                } else if (c == '\"' ) {
-                    result += "\"";
-                } else {
-                    result += c;
-                } 
+                switch (c) {
+                    case '\n':
+                        result += "\\n";
+                        break;
+                    case '\t':
+                        result += "\\t";
+                        break;
+                    case '\b':
+                        result += "\\b";
+                        break;
+                    case '\r':
+                        result += "\\r";
+                        break;
+                    case '\f':
+                        result += "\\f";
+                        break;
+                    case '\\':
+                        result += "\\";
+                        break;
+                    case '\'':
+                        result += "\'";
+                        break;
+                    case '\"':
+                        result += "\"";
+                        break;
+                    default:
+                        result += c;
+                }
             }
         } else {
             result = str;
