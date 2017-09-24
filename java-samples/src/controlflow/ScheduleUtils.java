@@ -9,19 +9,12 @@ public class ScheduleUtils {
      * otherwise
      */
     static boolean isWeekday(Days day){
-        if (day.equals(Days.MON)){
+        switch(day){
+        case MON: case TUES: case WED: case THUR: case FRI:
             return true;
-        } else if (day.equals(Days.TUES)){
-            return true;
-        } else if (day.equals(Days.WED)){
-            return true;
-        } else if (day.equals(Days.THUR)){
-            return true;
-        } else if (day.equals(Days.FRI)){
-            return true;
-        } else {
-            return false;
-        }    
+        default:
+            return false; // day is SAT or SUN
+        }
     }
 
     public static void main(String[] args) {
