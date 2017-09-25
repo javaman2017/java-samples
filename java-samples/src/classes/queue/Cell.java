@@ -1,21 +1,21 @@
 package classes.queue;
 
-public class Cell {
-    private Cell next;
-    private Object element;
+public class Cell<E> {
+    private Cell<E> next;
+    private E element;
     
-    public Cell(Object element) {
+    public Cell(E element) {
         super();
         this.element = element;
     }
     
-    public Cell(Cell next, Object element) {
+    public Cell(Cell<E> next, E element) {
         super();
         this.next = next;
         this.element = element;
     }
 
-    public Cell getNext() {
+    public Cell<E> getNext() {
         return next;
     }
 
@@ -23,11 +23,11 @@ public class Cell {
         this.next = next;
     }
 
-    public Object getElement() {
+    public E getElement() {
         return element;
     }
 
-    public void setElement(Object element) {
+    public void setElement(E element) {
         this.element = element;
     }
 }
