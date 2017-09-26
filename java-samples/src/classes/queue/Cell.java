@@ -19,7 +19,7 @@ public class Cell<E> {
         return next;
     }
 
-    public void setNext(Cell<E> next) {
+    public void setNext(Cell next) {
         this.next = next;
     }
 

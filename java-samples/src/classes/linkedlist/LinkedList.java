@@ -43,15 +43,15 @@ public class LinkedList {
 	}
 
 	public static void main(String[] args){
-		Vehicle vehicle1 = new Vehicle("Tom");
+		Vehicle vehicle1 = new Vehicle(null, "Tom");
 		vehicle1.setCurrentSpeed(10);
 		vehicle1.setCurrentDirection(1);
 		
-		Vehicle vehicle2 = new Vehicle("Dick");
+		Vehicle vehicle2 = new Vehicle(null, "Dick");
 		vehicle2.setCurrentSpeed(20);
 		vehicle2.setCurrentDirection(-1);
 		
-		Vehicle vehicle3 = new Vehicle("Harry");
+		Vehicle vehicle3 = new Vehicle(null, "Harry");
 		vehicle3.setCurrentSpeed(30);
 		vehicle3.setCurrentDirection(0);
 		
