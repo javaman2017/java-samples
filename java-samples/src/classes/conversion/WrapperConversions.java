@@ -22,7 +22,6 @@ public class WrapperConversions {
         for(int i : ia)
             System.out.println("i=" + i);
         
-        
         System.out.println("Wrapped integers:");
         
         Integer[] integerArray = {1, 2, 3, 4, 5};
@@ -32,8 +31,10 @@ public class WrapperConversions {
         for(Integer integer : integerArray)
             System.out.println("Type of integer=" + integer.getClass().getSimpleName());
         
+        
         Object o = 1 + 2 * 3;
         System.out.println("o=" + o);
+        
         
     }
 

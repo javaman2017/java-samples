@@ -9,14 +9,14 @@ public class LinkedList<E> {
 	
 	@Override
 	public String toString() {
-		String dump = "";
-		for(Node<E> node : nodes)
-		    dump += node + "\n";
-		return dump;
+	    if(nodes.length > 0)
+	        return this.nodes[0].toString();
+	    else 
+	        return "";
 	}
 
 	public LinkedList(){
-		nodes = new Node[DEFAULT_LENGTH];
+		this.nodes = new Node[DEFAULT_LENGTH];
 	}
 	
     public LinkedList(E... elements){
@@ -28,10 +28,10 @@ public class LinkedList<E> {
 	
 	public boolean add(E newElement){
 		boolean result = false;
-        Node<E> newNode = new Node();
+        Node newNode = new Node();
         newNode.value = newElement;
 		if (size > 0){
-			Node<E> headNode = nodes[size - 1];
+			Node headNode = nodes[size - 1];
 			headNode.next = newNode;
 			nodes[size++] = newNode;
 			result = true;
@@ -43,17 +43,29 @@ public class LinkedList<E> {
 		return result;
 	}
 	
+	public Node<E> find(E value) throws ObjectNotFoundException {
+	    Node<E> targetNode = null;
+	    for(Node<E> n : nodes)
+	        if (n.value.equals(value))
+	            targetNode =  n;
+	    
+	    if (targetNode == null)
+	        throw new ObjectNotFoundException(value);
+	    else 
+	        return targetNode;
+	}
+	
 	public int size(){
 		return size;
 	}
 	
-	private class Node<E> {
+    public static class Node<E> {
 	    E value;
 	    Node<E> next;
         
         @Override
         public String toString() {
-            return "Node [value=" + value + ",\n next=" + next + "]";
+            return "Node [value=" + value + ", next=" + next + "]";
         }
 	}
 
@@ -70,14 +82,21 @@ public class LinkedList<E> {
 		vehicle3.setCurrentSpeed(30);
 		vehicle3.setCurrentDirection(0);
 		
-		LinkedList<Vehicle> linkedList = new LinkedList<>(vehicle1, vehicle2, vehicle3);
+		LinkedList<Vehicle> vllist = new LinkedList<>(vehicle1, vehicle2, vehicle3);
 		
-		System.out.println(linkedList);
+		System.out.println(vllist);
 		
-		System.out.println("Number of elements in linkedList: " + linkedList.size());
+		System.out.println("Number of elements in linkedList: " + vllist.size());
 		
-		LinkedList<Integer> integerLinkedList = new LinkedList<>(1,2,3);
-		System.out.println(integerLinkedList);
+		LinkedList<Integer> illist = new LinkedList<>(1,2,3);
+		System.out.println(illist);
+		
+		try {
+            System.out.println(illist.find(3));
+        } catch (ObjectNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 		
 	}
 }

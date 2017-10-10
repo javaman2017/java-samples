@@ -4,24 +4,23 @@ public class SingleLinkQueue<E> {
     private Cell<E> head;
     private Cell<E> tail;
     
-    public void add(Cell<E> item){
-        if(!(item instanceof Cell))
-            throw new IllegalArgumentException("Cannot add " +item.getClass().getName() 
-                                             + " to " + this.getClass().getName());
+    public void add(E item){
+        
+        Cell<E> cell = new Cell<>(item);
         if (tail == null){
-            tail = item;
+            tail = cell;
             head = tail;
         } else {
             if (head == null){
                 tail.setNext(head);
             } else {
-                head.setNext(item);
+                head.setNext(cell);
             }
-            head = item;
+            head = cell;
         }
     }
     
-    public Cell<E> remove(){
+    public E remove(){
         if (tail == null)
             throw new RuntimeException("SingleLinkQueue is empty");
         
@@ -36,7 +35,7 @@ public class SingleLinkQueue<E> {
             tail = null;
         }
         
-        return cell;
+        return cell.getElement();
     }
     
     private Cell<E> findPreHead(Cell<E> cell){
@@ -91,23 +90,17 @@ public class SingleLinkQueue<E> {
  
     public static void main(String[] args){
         
-        Cell<String> item1 = new Cell<>("Tom");
-        Cell<String> item2 = new Cell<>("Dick");
-        Cell<String> item3 = new Cell<>("Harry");
-        Cell<String> item4 = new Cell<>("Johnny");
-        Cell<String> item5 = new Cell<>("Micky");
-        
         SingleLinkQueue<String> singleLinkQueue = new SingleLinkQueue<>();
-        singleLinkQueue.add(item1);
-        singleLinkQueue.add(item2);
-        singleLinkQueue.add(item3);
-        singleLinkQueue.add(item4); 
-        singleLinkQueue.add(item5);
+        singleLinkQueue.add("Tom");
+        singleLinkQueue.add("Dick");
+        singleLinkQueue.add("Harry");
+        singleLinkQueue.add("Johnny"); 
+        singleLinkQueue.add("Mickey");
         
         System.out.println(singleLinkQueue);
         
         while(!singleLinkQueue.isEmpty()){
-            System.out.println("Removing element " + ((Cell)singleLinkQueue.remove()).getElement());
+            System.out.println("Removing element " + singleLinkQueue.remove());
             System.out.println("Single Linked Queue is now: ");
             System.out.println(singleLinkQueue);
         }

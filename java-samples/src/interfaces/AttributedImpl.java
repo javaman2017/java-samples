@@ -4,13 +4,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 
-import classes.attrs.Attr;
-
-public class AttributedImpl implements Attributed, Iterable<Attr> {
-    protected Map<String,Attr> attrTable = new HashMap<>();
+public class AttributedImpl implements Attributed, Iterable<Attributed.Attr> {
+    protected Map<String,Attributed.Attr> attrTable = new HashMap<>();
 
     @Override
-    public void add(Attr newAttr) {
+    public void add(Attributed.Attr newAttr) {
         attrTable.put(newAttr.getName(),newAttr);
     }
 
@@ -25,12 +23,20 @@ public class AttributedImpl implements Attributed, Iterable<Attr> {
     }
 
     @Override
-    public Iterator<Attr> attrs() {
+    public Iterator<Attributed.Attr> attrs() {
         return attrTable.values().iterator();
     }
 
     @Override
-    public Iterator<Attr> iterator() {
+    public Iterator<Attributed.Attr> iterator() {
         return attrs();
+    }
+    
+    public void replaceValue(String name, Object newValue) 
+        throws NoSuchAttributeException {
+        Attr attr = find(name);
+        if(attr == null)
+            throw new NoSuchAttributeException(name);
+        attr.setValue(newValue);
     }
 }

@@ -1,13 +1,5 @@
 package classes.nestedtypes;
 
-class Outer {
-    public class Inner {
-        public void f(){
-            System.out.println("Inner.f() invoked");
-        }
-    }
-}
-
 public class ExtendedOuter extends Outer {
     public class ExtendedInner extends Inner {  
         public void g(){

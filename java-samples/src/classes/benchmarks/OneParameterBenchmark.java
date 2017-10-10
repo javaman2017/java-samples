@@ -5,7 +5,6 @@ public class OneParameterBenchmark extends BenchMark {
     private int parameter;
     
     public OneParameterBenchmark(int parameter) {
-        super();
         this.parameter = parameter;
     }
 

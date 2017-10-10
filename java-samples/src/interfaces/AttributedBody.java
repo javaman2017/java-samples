@@ -42,8 +42,13 @@ public class AttributedBody extends Body implements Attributed {
     public Iterator<Attr> attrs() {
         return attrImpl.attrs();
     }
+    
+    public void replaceValue(String name, Object newValue) 
+            throws NoSuchAttributeException{
+        attrImpl.replaceValue(name, newValue);
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         AttributedBody sun = new AttributedBody("Sun");
         sun.add(new Attr("Temperature",3000));
         sun.add(new Attr("Composition","Plasma"));
@@ -51,6 +56,23 @@ public class AttributedBody extends Body implements Attributed {
         
         sun.attrs()
            .forEachRemaining(System.out::println);
+        
+        try {
+            sun.replaceValue("number","1");
+        } catch (NoSuchAttributeException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        try {
+            sun.replaceValue("Temperature", Integer.valueOf(3500));
+        } catch (NoSuchAttributeException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        sun.attrs()
+        .forEachRemaining(System.out::println);
     }
 
 }

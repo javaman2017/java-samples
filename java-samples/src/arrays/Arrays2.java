@@ -7,9 +7,8 @@ public class Arrays2 {
 			throw new IllegalArgumentException();
 		else {
 			double sum = 0.0;  // we must initalise local variables before use
-			for (int i = 0; i < values.length; i++){
-				sum += values[i];
-			}
+			for(int i : values)
+			    sum += i;
 			return sum / values.length;
 			
 		}
@@ -17,15 +16,8 @@ public class Arrays2 {
 	}
 
 	public static void main(String[] args) {
-		final int SIZE = 10;
-		int[] values = new int[SIZE];
-		for(int i = 0; i < values.length; i++){
-			values[i] = i + 1;
-		}
-		
+		int[] values = {1, 2, 3, 4, 5};		
 		System.out.println(Arrays2.average(values));
-		
-		
 	}
 
 }

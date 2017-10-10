@@ -34,19 +34,24 @@ public class IntegerWrappers {
                     ", HighestOneBit: " + Integer.highestOneBit(i) + 
                     ", LowestOneBit: " + Integer.lowestOneBit(i) + 
                     ", numberOfLeadingZeros: " + Integer.numberOfLeadingZeros(i) + 
-                    ", numberOfTrailingZeros: " + Integer.numberOfTrailingZeros(i)
+                    ", numberOfTrailingZeros: " + Integer.numberOfTrailingZeros(i) + 
+                    ", reverse: " + Integer.reverse(i) +
+                    ", rotateLeft: " + Integer.rotateLeft(i,1) + 
+                    ", rotateRight: " + Integer.rotateRight(i, 1) + 
+                    ", signum: " + Integer.signum(i)
                     );
         System.out.println();
         System.out.println();
         
-       
+        Integer i = 3;
+        System.out.println("i as int: " + i);
+        System.out.println("i as short: " + i.shortValue());
+        System.out.println("i as long:  " + i.longValue());
+        System.out.println("i as float: " + i.floatValue());
+        System.out.println("i as double: " + i.doubleValue());   
         
+        
+        i = null;
+        System.out.println(i + 1);
     }
-        
-        
-       
-                
-
-    
-
 }

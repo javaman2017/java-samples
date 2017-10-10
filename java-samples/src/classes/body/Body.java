@@ -12,22 +12,25 @@ public class Body {
 		idNum = nextID++;
 	}
 	
-	Body(String name, Body orbitsAround){
+	public Body() {
+    }
+	
+	public Body(String bodyName){
+        this(bodyName,null);
+    }
+	
+	public Body(String name, Body orbitsAround){
 		this.name = name;
 		orbits = orbitsAround;
 	}
 	
-	public Body(String bodyName){
-		this(bodyName,null);
+	public Body(Body other){
+	        idNum = other.idNum;
+	        name = other.name;
+	        orbits = other.orbits;
 	}
-	
-	Body(Body other){
-		idNum = other.idNum;
-		name = other.name;
-		orbits = other.orbits;
-	}
-	
-	@Override
+
+    @Override
 	public String toString() {
 		String desc =  "Body [idNum=" + idNum + ", name=" + name ; 
 		if (orbits != null)

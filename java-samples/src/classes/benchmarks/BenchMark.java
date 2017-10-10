@@ -1,4 +1,4 @@
-package classes.abstractclasses;
+package classes.benchmarks;
 
 abstract class BenchMark {
     abstract void benchmark();

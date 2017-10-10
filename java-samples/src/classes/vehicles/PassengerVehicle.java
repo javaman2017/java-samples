@@ -1,11 +1,13 @@
 package classes.vehicles;
 
+import classes.energysources.EnergySource;
+
 public class PassengerVehicle extends Vehicle {
 	private final int numberOfSeats;
 	private int occupiedNumberOfSeats;
 
-	public PassengerVehicle(String ownerName, int numberOfSeats) {
-		super(ownerName);
+	public PassengerVehicle(EnergySource energySource,String ownerName, int numberOfSeats) {
+		super(energySource,ownerName);
 		this.numberOfSeats = numberOfSeats;
 	}
 	
@@ -28,11 +30,11 @@ public class PassengerVehicle extends Vehicle {
 	}
 
 	public static void main(String[] args) {
-		PassengerVehicle car = new PassengerVehicle("Tom",4);
+		PassengerVehicle car = new PassengerVehicle(null, "Tom",4);
 		car.setOccupiedNumberOfSeats(1);
 		System.out.println(car);
 		
-		PassengerVehicle van = new PassengerVehicle("Dick",2);
+		PassengerVehicle van = new PassengerVehicle(null, "Dick",2);
 		car.setOccupiedNumberOfSeats(2);
 		System.out.println(van);
 	}
