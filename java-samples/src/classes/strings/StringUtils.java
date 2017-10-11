@@ -1,19 +1,35 @@
 package classes.strings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringUtils {
     
-    public static String delimitedString(String from, char start, char end){
-        int startPos = from.indexOf(start);
-        int endPos = from.lastIndexOf(end);
-        if(startPos == -1)
-            return null;
-        else if (endPos == -1)
-            return from.substring(startPos);
-        else
-            return from.substring(startPos, endPos + 1);
+    public static String[] delimitedString(String from, char start, char end){
+        List<String> dslist = new ArrayList<>();
+        String s = "";
+        char c;
+        for(int i = 0; i < from.length(); i++){
+              c = from.charAt(i);
+              if (s.length() > 0){ // s.length() > 0 only when we are in a delimited string
+                  s += c;
+                  if (c == end){
+                      dslist.add(s);
+                      s = "";
+                  }
+              } else {
+                  if (c == start)
+                      s += c;
+              }    
+        }
+        
+        return dslist.toArray(new String[dslist.size()]);   
     }
-
-    public static void main(String[] args) {
-       System.out.println(StringUtils.delimitedString("Il a dit #Bonjour!#",'#','#'));
+    
+    public static void main(String[] args) {       
+       String s = "Il a dit #Bonjour!# #Bonjour!#";
+       String[] tokens = StringUtils.delimitedString("Il a dit #Bonjour!# #Bonjour!# #Bonjour!# #J'e ma pelle#",'#','#');
+       for(String token: tokens)
+           System.out.println(token);
     }
 }
