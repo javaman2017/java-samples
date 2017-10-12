@@ -12,11 +12,7 @@ public class FindAndReplace {
         
         Pattern pat = Pattern.compile("sun");
         Matcher matcher = pat.matcher(input);
-        StringBuffer result = new StringBuffer();
-        boolean found;
-        while((found = matcher.find())) // continue to match as long as there are matches to be made
-            matcher.appendReplacement(result, "moon");
-        matcher.appendTail(result);
+        String result = matcher.replaceAll("moon");
         
         System.out.println("After a replace operation: " + result);
 
