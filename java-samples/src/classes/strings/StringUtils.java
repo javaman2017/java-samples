@@ -68,7 +68,7 @@ public class StringUtils {
         return buf;
     }
     
-    public static String convertToCommaSequence(String numStr) {
+    public static String convertToCommaSequence(String numStr,String sep,int count) {
         if (numStr == null || numStr.length() == 0)
             throw new IllegalArgumentException();
         
@@ -76,13 +76,12 @@ public class StringUtils {
         if (len <= 3)
             return numStr;
         
-        String DELIMATOR = ",";
         StringBuilder buf = new StringBuilder(numStr);
       
-        buf.insert(len - 3, DELIMATOR);
-        int leftover = buf.length() - 4;
-        for(int i = buf.length() - 7; leftover > 3 && i > 0; i-=3) {
-            buf.insert(i, DELIMATOR);
+        buf.insert(len - count, sep);
+        int leftover = buf.length() - count -1;
+        for(int i = buf.length() - 2*count - 1; leftover > count && i > 0; i-=count) {
+            buf.insert(i, sep);
             leftover = buf.length() - i;
         }
         
@@ -130,7 +129,7 @@ public class StringUtils {
        
        String[] numStrs = {"1","12","123","1234","12345","123456","1234567","12345678","123456789","987654321989"};
        for(String numStr : numStrs)
-           System.out.println("Old numStr: " + numStr + ", new numStr: " + convertToCommaSequence(numStr));
+           System.out.println("Old numStr: " + numStr + ", new numStr: " + convertToCommaSequence(numStr,",",2));
       
     }
 }
