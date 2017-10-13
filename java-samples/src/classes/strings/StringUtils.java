@@ -39,11 +39,22 @@ public class StringUtils {
            System.out.println(token);
        System.out.println();
        
+       List<Long> runningTimes = new ArrayList<>();
+       
        String quote = "To be or not to be";
-       long start = System.nanoTime();
-       for(int i = 0; i < 10000; i++)
-           hashedQuote(quote);
-       long elapsedtime = System.nanoTime() - start;
-       System.out.println("Elapsed time to hash quote 10000 times: " + elapsedtime);
+       long start = 0;
+       long elapsedTime = 0;
+       for(int j = 0; j < 10000; j++) {
+           start = System.nanoTime();
+           for(int i = 0; i < 10000; i++)
+               hashedQuote(quote);
+           elapsedTime = System.nanoTime() - start;
+           runningTimes.add(elapsedTime);
+       }
+       
+       double totalRunningTime = 0;
+       for(long rt: runningTimes)
+           totalRunningTime += rt;
+       System.out.println("Average running time of 10,000 calls to hashQuote for 10,000 iterations: " + (totalRunningTime/runningTimes.size()));
     }
 }
