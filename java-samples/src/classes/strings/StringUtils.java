@@ -27,10 +27,9 @@ public class StringUtils {
     }
     
     public static String hashedQuote(String quote) {
-        return '#' + quote + '#';
+        return new StringBuilder().append('#')
+                    .append(quote).append('#').toString();
     }
-    
-    
     
     public static void main(String[] args) {       
        String s = "Il a dit #Bonjour!# #Bonjour!#";
