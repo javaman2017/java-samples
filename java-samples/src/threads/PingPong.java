@@ -1,6 +1,6 @@
 package threads;
 
-public class PingPong extends Thread {
+public class PingPong implements Runnable {
     private String word;    // what word to print
     private int    delay;   // how long to pause
     
@@ -21,7 +21,10 @@ public class PingPong extends Thread {
     }
 
     public static void main(String[] args) {
-        new PingPong("ping", 33).start();
-        new PingPong("PONG", 100).start();
+        Runnable ping = new PingPong("ping", 33);
+        Runnable pong = new PingPong("PONG", 100);
+        
+        new Thread(ping).start();
+        new Thread(pong).start();
     }
 }
