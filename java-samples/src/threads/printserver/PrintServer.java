@@ -2,10 +2,11 @@ package threads.printserver;
 
 public class PrintServer implements Runnable {
 	
+	private final static String THREAD_NAME = "PrintServerThread";
 	private final PrintQueue requests = new PrintQueue();
 	
 	public PrintServer() {
-		new Thread(this).start();
+		new Thread(this,THREAD_NAME).start();
 	}
 	
 	public void print(PrintJob job) {
@@ -14,6 +15,9 @@ public class PrintServer implements Runnable {
 
 	@Override
 	public void run() {
+		if (!THREAD_NAME.equals(Thread.currentThread().getName()))
+			return; // only PrintServer thread can run print jobs
+		
 		for(;;)
 			realPrint(requests.remove());
 	}
@@ -25,7 +29,7 @@ public class PrintServer implements Runnable {
 	public static void main(String[] args) {
 		PrintServer printServer = new PrintServer();
 		
-		printServer.print(new PrintJob("doc",1));
+		
 
 	}
 
