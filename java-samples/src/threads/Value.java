@@ -1,5 +1,7 @@
 package threads;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Value {
     private int value;
 
@@ -9,34 +11,42 @@ public class Value {
 
     public void add(int increment){
         value += increment;
-        System.out.println(Thread.currentThread().getName() + " updated value to new value = " + value);
     }
 
 
     public static void main(String[] args) throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(3);
+
         int increment = 1;
         Value value = new Value();
         Thread threadA = new Thread(new Runnable() {
             @Override
             public void run() {
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 1000; i++)
                         value.add(increment);
+
+                    latch.countDown();
+
             }
         },"threadA");
 
         Thread threadB = new Thread(new Runnable() {
             @Override
             public void run() {
-                    for (int i = 0; i < 100; i++)
+                    for (int i = 0; i < 1000; i++)
                         value.add(increment);
+
+                    latch.countDown();
             }
         },"threadB");
 
         Thread threadC = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 1000; i++)
                     value.add(increment);
+
+                latch.countDown();
             }
         },"threadC");
 
@@ -44,10 +54,8 @@ public class Value {
         threadB.start();
         threadC.start();
 
-        // join main onto the end of threadC so that we only evaluate the assert when all threads are done
-        // this is one way
-        threadC.join();
-        assert value.getValue() == 120 : "value should be 120. Actual value is = " + value.getValue();
+        latch.await();
+        System.out.println("Final value = " + value.getValue());
 
     }
 }
