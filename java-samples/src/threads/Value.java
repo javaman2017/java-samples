@@ -22,10 +22,12 @@ public class Value {
         Thread threadA = new Thread(new Runnable() {
             @Override
             public void run() {
-                    for (int i = 0; i < 1000; i++)
-                        value.add(increment);
+                    synchronized (value) {
+                        for (int i = 0; i < 1000; i++)
+                            value.add(increment);
 
-                    latch.countDown();
+                        latch.countDown();
+                    }
 
             }
         },"threadA");
@@ -33,20 +35,24 @@ public class Value {
         Thread threadB = new Thread(new Runnable() {
             @Override
             public void run() {
+                synchronized (value) {
                     for (int i = 0; i < 1000; i++)
                         value.add(increment);
 
                     latch.countDown();
+                }
             }
         },"threadB");
 
         Thread threadC = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 1000; i++)
-                    value.add(increment);
+                synchronized (value) {
+                    for (int i = 0; i < 1000; i++)
+                        value.add(increment);
 
-                latch.countDown();
+                    latch.countDown();
+                }
             }
         },"threadC");
 
