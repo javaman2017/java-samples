@@ -14,6 +14,8 @@ public class Value {
         value += increment;
     }
 
+    public static void decrement(int decrement){ value -= decrement; }
+
 
     public static void main(String[] args) throws InterruptedException {
         for(int run = 0; run < 10; run++) {
@@ -21,11 +23,14 @@ public class Value {
 
             int increment = 1;
             Value value = new Value();
+            value.setValue(3000);
             Thread threadA = new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    synchronized (Value.class) {
                         for (int i = 0; i < 1000; i++)
-                            value.add(increment);
+                            value.decrement(increment);
+                    }
 
                         latch.countDown();
                 }
@@ -34,8 +39,10 @@ public class Value {
             Thread threadB = new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    synchronized (Value.class) {
                         for (int i = 0; i < 1000; i++)
-                            value.add(increment);
+                            value.decrement(increment);
+                    }
 
                         latch.countDown();
                 }
@@ -44,8 +51,10 @@ public class Value {
             Thread threadC = new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    synchronized (Value.class) {
                         for (int i = 0; i < 1000; i++)
-                            value.add(increment);
+                            value.decrement(increment);
+                    }
 
                         latch.countDown();
                 }
