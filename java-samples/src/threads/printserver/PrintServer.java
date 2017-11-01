@@ -20,8 +20,13 @@ public class PrintServer implements Runnable {
 		if (printServerThreadId != Thread.currentThread().getId())
 			return; // only allow this thread id to execute run
 		
-		for(;;)
-			realPrint(requests.remove());
+		for(;;) {
+			try {
+				realPrint(requests.remove());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void realPrint(PrintJob job) {

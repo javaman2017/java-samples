@@ -1,22 +1,21 @@
 package threads.printserver;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+import classes.queue.SingleLinkQueue;
 
 public class PrintQueue {
 	
-	private Queue<PrintJob> requests = new PriorityQueue<>();
+	private SingleLinkQueue<PrintJob> queue = new SingleLinkQueue<>();
 	
-	public void add(PrintJob job) {
-		requests.add(job);
+	public synchronized void add(PrintJob job) {
+		queue.add(job);
+		notifyAll();    // Tell waiters print job added
 	}
 	
-	public PrintJob remove() {
-		return requests.remove();
-	}
-	
-	public boolean isEmpty() {
-		return requests.isEmpty();
-	}
+	public synchronized PrintJob remove() throws InterruptedException {
 
+		while (queue.isEmpty())
+			wait();	// Wait for a print job
+
+		return queue.remove();
+	}
 }
