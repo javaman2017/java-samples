@@ -5,5 +5,5 @@ public @interface ClassInfo {
     String createdBy();
     String lastModified();
     String lastModifiedBy();
-    int revision();
+    Revision revision();
 }
