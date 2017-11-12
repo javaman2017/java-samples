@@ -4,6 +4,7 @@ package annotations;
            createdBy = "Mr T",
            lastModified = "665",
            lastModifiedBy = "Mr T",
-           revision = @Revision)
+           revision = @Revision(major = 2))
 public class MyClass {
+    private int i;
 }
